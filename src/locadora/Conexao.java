@@ -12,7 +12,7 @@ import java.sql.DriverManager;
  */
 public class Conexao {
     
-    Connection conn;
+    private Connection conn;
 
     public static Connection conectar() {
         Connection con = null;

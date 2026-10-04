@@ -1,27 +1,28 @@
 package locadora;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
-import java.sql.Date;
-import java.util.*;
 
 public class LocacaoDao {
 
-    
-     Connection conn;
-     PreparedStatement st;
-     ResultSet rs;
+   private Connection conn;
+   private PreparedStatement st;
+   private ResultSet rs;
     
      public LocacaoDao(){
-         conn = Conexao.conectar();
+        conn = Conexao.conectar();
      }
      
-   public void inserir(Locacao locacao) {
+     public void inserir(Locacao locacao) {
 
-    String sql = "INSERT INTO locacao (id_cliente,id_filme,quantidade,data_locacao,data_devolucao,valor_total) VALUES (?,?,?,?,?,?)";
-    try {
+        String sql = "INSERT INTO locacao (id_cliente,id_filme,quantidade,data_locacao,data_devolucao,valor_total) VALUES (?,?,?,?,?,?)";
+     
+     try {
 
         st = conn.prepareStatement(sql);
 
@@ -33,7 +34,7 @@ public class LocacaoDao {
         st.setDouble(6, locacao.getValorTotal());
         st.executeUpdate();
 
-    } catch (Exception e) {
+    } catch (SQLException e) {
         e.printStackTrace();
     }
 }
@@ -61,7 +62,7 @@ public class LocacaoDao {
                 lista.add(l);
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

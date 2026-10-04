@@ -5,25 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDao {
-
-   
     
-     Connection conn;
-     PreparedStatement st;
-     ResultSet rs;
+     private Connection conn;
+     private PreparedStatement st;
+     private ResultSet rs;
     
      public FuncionarioDao(){
-    conn = Conexao.conectar();
+        conn = Conexao.conectar();
 }
     
-    public int cadastrar(Funcionario funcionario) {
+     public int cadastrar(Funcionario funcionario) {
 
        String sql = "INSERT INTO funcionario(nome, telefone) VALUES (?, ?)";
        int status;
         try
               {
-             st = conn.prepareStatement(sql);
-             
+            st = conn.prepareStatement(sql);
             st.setString(1, funcionario.getNome());
             st.setString(2, funcionario.getTelefone());
            

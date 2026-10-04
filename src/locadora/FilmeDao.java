@@ -7,9 +7,9 @@ import java.util.List;
 public class FilmeDao {
 
     
-     Connection conn;
-     PreparedStatement st;
-     ResultSet rs;
+     private Connection conn;
+     private PreparedStatement st;
+     private ResultSet rs;
     
      public FilmeDao(){
          conn = Conexao.conectar();
@@ -27,7 +27,7 @@ public class FilmeDao {
 
             st.executeUpdate();
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -52,7 +52,7 @@ public class FilmeDao {
                 lista.add(f);
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

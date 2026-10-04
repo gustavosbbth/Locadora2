@@ -6,9 +6,9 @@ import java.util.List;
 
 public class ClienteDao {
 
-     Connection conn;
-     PreparedStatement st;
-     ResultSet rs;
+     private Connection conn;
+     private PreparedStatement st;
+     private ResultSet rs;
     
     public ClienteDao(){
         conn = Conexao.conectar();
@@ -37,7 +37,7 @@ public class ClienteDao {
 
         try {
 
-             st = conn.prepareStatement(sql);
+            st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             
             while(rs.next()) {
